@@ -1,7 +1,7 @@
 #ifndef PRIORITIZED_QP_OSQP_H
 #define PRIORITIZED_QP_OSQP_H
 
-#include <osqp++.h>
+#include <osqp-cpp/osqp++.h>
 #include <prioritized_qp_base/PrioritizedQPBaseSolver.h>
 
 namespace prioritized_qp_osqp{
