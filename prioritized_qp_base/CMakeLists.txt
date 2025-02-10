@@ -10,9 +10,10 @@ find_package(ament_cmake REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(EIGEN eigen3)
 
+# ament build libraries
 add_library(${PROJECT_NAME} SHARED
   src/PrioritizedQPBaseSolver.cpp
-  )
+)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 target_compile_features(${PROJECT_NAME} PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -22,12 +23,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC
   ${EIGEN_LIBRARIES}
-  )
+)
 
-# Causes the visibility macros to use dllexport rather than dllimport,
-# which is appropriate when building the dll but not consuming it.
-#target_compile_definitions(mylib PRIVATE "MYLIB_BUILDING_LIBRARY")
-
+# ament install
 install(
   DIRECTORY include/
   DESTINATION include/

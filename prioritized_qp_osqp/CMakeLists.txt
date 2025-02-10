@@ -5,17 +5,14 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(prioritized_qp_base REQUIRED)
 find_package(osqp-cpp REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(EIGEN eigen3)
 
-###########
-## Build ##
-###########
-
-## Declare a C++ library
+# ament build libraries
 add_library(${PROJECT_NAME} SHARED
   src/prioritized_qp_osqp.cpp
 )
@@ -34,10 +31,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   ${EIGEN_LIBRARIES}
 )
 
-#############
-## Install ##
-#############
-
+# ament install
 install(
   DIRECTORY include/
   DESTINATION include/
@@ -58,4 +52,5 @@ ament_export_libraries(
 ament_export_targets(
   export_${PROJECT_NAME}
 )
+# ament_export_dependancies(prioritized_osqp_base)
 ament_package()
