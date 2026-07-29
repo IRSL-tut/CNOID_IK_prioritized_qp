@@ -26,7 +26,6 @@ add_library(${PROJECT_NAME} SHARED
   src/PrioritizedQPBaseSolver.cpp
   )
 
-ament_target_dependencies(${PROJECT_NAME} Eigen3)
 target_link_libraries(${PROJECT_NAME} PUBLIC
   Eigen3::Eigen)
 
